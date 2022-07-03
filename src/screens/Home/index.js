@@ -1,38 +1,23 @@
-import React from "react";
-import { Splide, SplideSlide } from "splide-nextjs/react-splide";
-import "splide-nextjs/splide/dist/css/themes/splide-default.min.css";
+import React, { useEffect, useState } from "react";
+import Slider from "./Slider";
+import axios from "axios";
+import HotProduct from "./HotProducts";
+import ContactForm from "./ContactForm/index";
+
 function HomeScreen() {
+  const [homeData, setHomeData] = useState({});
+
+  useEffect(() => {
+    axios.get("/api/home").then((res) => {
+      setHomeData(res.data);
+    });
+  }, []);
+
   return (
     <div>
-      <Splide
-        options={
-          {
-            //   perPage: 2,
-          }
-        }
-        aria-label="My Favorite Images"
-      >
-        <SplideSlide>
-          <img height="200px" src="/images/test.jpg" alt="Image 1" />
-        </SplideSlide>
-        <SplideSlide>
-          <img
-            height="200px"
-            src="/images/webdesifn_basics.png"
-            alt="Image 2"
-          />
-        </SplideSlide>
-        <SplideSlide>
-          <img height="200px" src="/images/test.jpg" alt="Image 1" />
-        </SplideSlide>
-        <SplideSlide>
-          <img
-            height="200px"
-            src="/images/webdesifn_basics.png"
-            alt="Image 2"
-          />
-        </SplideSlide>
-      </Splide>
+      <Slider homeData={homeData} />
+      <HotProduct homeData={homeData} />
+      <ContactForm />
     </div>
   );
 }

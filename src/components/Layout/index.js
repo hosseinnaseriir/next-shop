@@ -5,7 +5,7 @@ import Link from "next/link";
 function Layout(props) {
   return (
     <>
-      <Navbar bg="light" expand="lg">
+      <Navbar className="py-4" bg="light" expand="lg">
         <Container>
           <Navbar.Brand href="#home">
             <svg
@@ -24,10 +24,18 @@ function Layout(props) {
           <Navbar.Toggle aria-controls="basic-navbar-nav" />
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="me-auto main-nav">
-              <Link href="/">Home</Link>
-              <Link href="/shop">Shop</Link>
-              <Link href="/contact">Contact</Link>
-              <Link href="/about">About</Link>
+              <li className="mx-0 my-3 my-md-0 d-inline-block mx-md-4">
+                <Link href="/">Home</Link>
+              </li>
+              <li className="mx-0 my-3 my-md-0 d-inline-block mx-md-4">
+                <Link href="/shop">Shop</Link>
+              </li>
+              <li className="mx-0 my-3 my-md-0 d-inline-block mx-md-4">
+                <Link href="/contact">Contact</Link>
+              </li>
+              <li className="mx-0 my-3 my-md-0 d-inline-block mx-md-4">
+                <Link href="/about">About</Link>
+              </li>
             </Nav>
           </Navbar.Collapse>
         </Container>
