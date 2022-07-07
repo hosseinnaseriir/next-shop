@@ -1,9 +1,14 @@
 import axios from "axios";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useContext } from "react";
 import { Splide, SplideSlide } from "splide-nextjs/react-splide";
 import "splide-nextjs/splide/dist/css/themes/splide-default.min.css";
 import { Container, Card, Button } from "react-bootstrap";
+import ProductCard from "./ProductCard";
+
+
 function HotProduct({ homeData }) {
+
+
   return (
     <Container>
       <h2 className="py-5 border-2 border-border-bottom">Hot products</h2>
@@ -28,21 +33,7 @@ function HotProduct({ homeData }) {
       >
         {homeData?.products?.map((product) => (
           <SplideSlide key={product.id}>
-            <Card>
-              <Card.Img
-                style={{ height: "13rem" , objectFit:'cover' ,  }}
-                variant="top"
-                src={product.img}
-              />
-              <Card.Body>
-                <Card.Title>{product.name}</Card.Title>
-                <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
-                </Card.Text>
-                <Button variant="primary">Go somewhere</Button>
-              </Card.Body>
-            </Card>
+            <ProductCard product={product} />
           </SplideSlide>
         ))}
       </Splide>

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Slider from "./Slider";
 import axios from "axios";
 import HotProduct from "./HotProducts";
 import ContactForm from "./ContactForm/index";
+
 
 function HomeScreen() {
   const [homeData, setHomeData] = useState({});
@@ -15,6 +16,7 @@ function HomeScreen() {
 
   return (
     <div>
+     
       <Slider homeData={homeData} />
       <HotProduct homeData={homeData} />
       <ContactForm />

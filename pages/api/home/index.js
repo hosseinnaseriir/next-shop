@@ -55,7 +55,7 @@ export default function home(req, res) {
         price: 3000,
       },
       {
-        id: 0,
+        id: 8,
         name: "product 1",
         img: "https://picsum.photos/200/300",
         price: 3000,

@@ -1,11 +1,14 @@
 import "./../public/styles/index.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Layout from "../src/components/Layout";
+import ShoppingContextProvider from "../src/contexts/shoppingContext";
 
 export default function MyApp({ Component, pageProps }) {
   return (
-    <Layout>
-      <Component {...pageProps} />
-    </Layout>
+    <ShoppingContextProvider>
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
+    </ShoppingContextProvider>
   );
 }
