@@ -1,8 +1,15 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import Link from "next/link";
+import Button from "./../common/Button/index";
+import { shoppingContext } from "./../../contexts/shoppingContext";
+import { useRouter } from "next/router"
 
 function Layout(props) {
+  const { shoppingCard } = useContext(shoppingContext);
+
+  const router = useRouter()
+
   return (
     <>
       <Navbar className="py-4" bg="light" expand="lg">
@@ -38,6 +45,7 @@ function Layout(props) {
               </li>
             </Nav>
           </Navbar.Collapse>
+          <Button onClick={()=> router.push('/shpping-card')}>Shoping Card ({shoppingCard.products.length})</Button>
         </Container>
       </Navbar>
       {props.children}

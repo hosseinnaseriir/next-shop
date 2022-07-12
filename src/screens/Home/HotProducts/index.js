@@ -3,11 +3,12 @@ import React, { useEffect, useContext } from "react";
 import { Splide, SplideSlide } from "splide-nextjs/react-splide";
 import "splide-nextjs/splide/dist/css/themes/splide-default.min.css";
 import { Container, Card, Button } from "react-bootstrap";
-import ProductCard from "./ProductCard";
-
+import ProductCard from './../../../components/common/Button/ProductCard/index';
+import { shoppingContext } from "./../../../contexts/shoppingContext";
 
 function HotProduct({ homeData }) {
-
+  const { shoppingCard, dispatch, shoppingCardDispatchMiddleware } =
+  useContext(shoppingContext);
 
   return (
     <Container>
