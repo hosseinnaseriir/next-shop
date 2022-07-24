@@ -2,7 +2,8 @@ import HomeScreen from "../src/screens/Home";
 import styles from "./../public/styles/Home.module.css";
 import Head from "next/head";
 import { useReducer, useState } from "react";
-import Button from "../src/components/common/Button";
+import { Button } from "@mui/material";
+// import Button from "../src/components/common/Button";
 
 const counterActions = {
   inc: "INCREASE_COUNTER",

@@ -16,7 +16,7 @@ function ShoppingCardScrren() {
         <div className="row">
           {shoppingCard.products.map((product) => {
             return (
-              <div className="col-md-4 col-lg-3">
+              <div key={product.id} className="col-md-4 col-lg-3">
                 <ProductCard product={product} />
               </div>
             );

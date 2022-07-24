@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Splide, SplideSlide } from "splide-nextjs/react-splide";
 import "splide-nextjs/splide/dist/css/themes/splide-default.min.css";
-function Slider({homeData}) {
-
+function Slider({ homeData }) {
   return (
     <div>
       <Splide
@@ -13,8 +12,8 @@ function Slider({homeData}) {
         }
         aria-label="My Favorite Images"
       >
-        {homeData?.sliderItems?.map((slider) => (
-          <SplideSlide key={slider.id}>
+        {homeData?.sliderItems?.map((slider, i) => (
+          <SplideSlide key={slider.id + i}>
             <img src={slider.img} alt="Image 1" />
           </SplideSlide>
         ))}

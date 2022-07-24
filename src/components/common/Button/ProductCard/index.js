@@ -7,7 +7,7 @@ import {
 } from "../../../../contexts/shoppingContext";
 
 function ProductCard({ product }) {
-  const [count, setCount] = useState(product.amount || 1);
+  const [count, setCount] = useState(product.count || 1);
 
   const { shoppingCard, dispatch, shoppingCardDispatchMiddleware } =
     useContext(shoppingContext);
@@ -22,10 +22,19 @@ function ProductCard({ product }) {
       toast.warn("not added this product in shopping card already exits");
     }
   };
-  
-  const handleDeleteProduct = (id) =>{
-    dispatchMidlleware(id , {type:"DELETE_PRODUCT"})
-  }
+
+  const handleDeleteProduct = (id) => {
+    dispatchMidlleware(id, { type: "DELETE_PRODUCT" });
+  };
+
+  const handleDecreaseProduct = (id) => {
+    setCount((prevState) => prevState - 1);
+    dispatchMidlleware(id, { type: "EDIT_PRODUCT", payload: count + 1 });
+  };
+  const handleIncreaseProduct = (id) => {
+    setCount((prevState) => prevState + 1);
+    dispatchMidlleware(id, { type: "EDIT_PRODUCT", payload: count + 1 });
+  };
 
   return (
     <Card>
@@ -44,7 +53,7 @@ function ProductCard({ product }) {
           <>
             <div className="d-flex">
               <Button
-                onClick={() => setCount((prevState) => prevState - 1)}
+                onClick={() => handleDecreaseProduct(product.id)}
                 variant="primary"
                 disabled={count <= 1}
               >
@@ -52,19 +61,25 @@ function ProductCard({ product }) {
               </Button>
               <input
                 value={count}
-                class="col"
+                className="col"
                 min={1}
                 onChange={(e) => setCount(+e.target.value)}
                 type="number"
               />
               <Button
-                onClick={() => setCount((prevState) => prevState + 1)}
+                // onClick={() => setCount((prevState) => prevState + 1)}
+                onClick={() => handleIncreaseProduct(product.id)}
                 variant="primary"
               >
                 +
               </Button>
             </div>
-            <button onClick={() => handleDeleteProduct( product.id)} className="w-100 btn btn-danger">Delete</button>
+            <button
+              onClick={() => handleDeleteProduct(product.id)}
+              className="w-100 btn btn-danger"
+            >
+              Delete
+            </button>
           </>
         ) : (
           <div className="row">
@@ -78,6 +93,7 @@ function ProductCard({ product }) {
             <input
               onChange={(e) => setCount(e.target.value)}
               className="col-4"
+              value={count}
               type="number"
             />
           </div>
